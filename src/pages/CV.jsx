@@ -32,14 +32,15 @@ export default function CV() {
                     observabilité via la stack <span className="font-medium text-blue-600">Grafana</span> / <span className="font-medium text-yellow-600">Prometheus</span> / <span className="font-medium text-emerald-600">Elasticsearch</span>,
                     et participation aux mises en production.
                   </p>
-                  <div className="mt-3 flex flex-wrap gap-2 text-sm">
-                    <span className="px-2 py-1 bg-gray-100 rounded-md">GitLab CI/CD</span>
-                    <span className="px-2 py-1 bg-gray-100 rounded-md">AWX / Ansible</span>
-                    <span className="px-2 py-1 bg-gray-100 rounded-md">Cypress</span>
-                    <span className="px-2 py-1 bg-gray-100 rounded-md">Grafana</span>
-                    <span className="px-2 py-1 bg-gray-100 rounded-md">Prometheus</span>
-                    <span className="px-2 py-1 bg-gray-100 rounded-md">Elasticsearch</span>
+                  <div className="mt-3 flex flex-wrap gap-2 text-sm font-medium">
+                    <span className="px-2 py-1 rounded-md bg-orange-100 text-orange-800">GitLab CI/CD</span>
+                    <span className="px-2 py-1 rounded-md bg-red-100 text-red-800">AWX / Ansible</span>
+                    <span className="px-2 py-1 rounded-md bg-emerald-100 text-emerald-800">Cypress</span>
+                    <span className="px-2 py-1 rounded-md bg-orange-100 text-orange-800">Grafana</span>
+                    <span className="px-2 py-1 rounded-md bg-yellow-100 text-yellow-800">Prometheus</span>
+                    <span className="px-2 py-1 rounded-md bg-green-100 text-green-800">Elasticsearch</span>
                   </div>
+
                 </div>
               </div>
 
