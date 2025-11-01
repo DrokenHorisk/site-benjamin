@@ -1,6 +1,6 @@
 import Nav from '../components/Nav.jsx'
-import { FaAws, FaDocker, FaPython, FaJava, FaGitlab, FaAnsible, FaLinux } from "react-icons/fa";
-import { SiKubernetes } from "react-icons/si";
+import { FaAws, FaDocker, FaPython, FaJava, FaGitlab, FaLinux } from "react-icons/fa";
+import { SiKubernetes, SiAnsible } from "react-icons/si";
 import { SiTerraform, SiGrafana, SiPrometheus, SiElasticsearch, SiArgocd, SiBash } from "react-icons/si";
 
 export default function CV() {
@@ -49,7 +49,7 @@ export default function CV() {
                 <span>Terraform</span>
               </div>
               <div className="flex flex-col items-center">
-                <FaAnsible className="text-3xl text-red-600" />
+                <SiAnsible className="text-3xl text-red-500" />
                 <span>Ansible</span>
               </div>
               <div className="flex flex-col items-center">
