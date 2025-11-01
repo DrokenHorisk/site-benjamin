@@ -58,14 +58,15 @@ export default function CV() {
                     déployé sur Kubernetes et piloté par Argo CD. Automatisation du pipeline CI/CD,
                     monitoring Prometheus/Grafana, et hébergement GitOps sur mon serveur personnel.
                   </p>
-                  <div className="mt-3 flex flex-wrap gap-2 text-sm">
-                    <span className="px-2 py-1 bg-gray-100 rounded-md">FastAPI</span>
-                    <span className="px-2 py-1 bg-gray-100 rounded-md">React</span>
-                    <span className="px-2 py-1 bg-gray-100 rounded-md">Kubernetes</span>
-                    <span className="px-2 py-1 bg-gray-100 rounded-md">ArgoCD</span>
-                    <span className="px-2 py-1 bg-gray-100 rounded-md">Docker</span>
-                    <span className="px-2 py-1 bg-gray-100 rounded-md">GitHub Actions</span>
+                  <div className="mt-3 flex flex-wrap gap-2 text-sm font-medium">
+                    <span className="px-2 py-1 rounded-md bg-yellow-100 text-yellow-800">FastAPI</span>
+                    <span className="px-2 py-1 rounded-md bg-sky-100 text-sky-800">React</span>
+                    <span className="px-2 py-1 rounded-md bg-blue-100 text-blue-800">Kubernetes</span>
+                    <span className="px-2 py-1 rounded-md bg-rose-100 text-rose-800">ArgoCD</span>
+                    <span className="px-2 py-1 rounded-md bg-cyan-100 text-cyan-800">Docker</span>
+                    <span className="px-2 py-1 rounded-md bg-gray-100 text-gray-800">GitHub Actions</span>
                   </div>
+
                 </div>
               </div>
             </div>
@@ -148,7 +149,17 @@ export default function CV() {
           </div>
           <div className="card">
             <h3 className="section-title">Langues</h3>
-            <p className="text-sm text-gray-700">🇫🇷 Français (natif)<br />🇬🇧 Anglais (lecture technique)</p>
+            <ul className="space-y-2 text-sm">
+              <li className="flex items-center gap-2">
+                <span className="text-2xl">🇫🇷</span>
+                <span>Français — <span className="text-gray-600">langue maternelle</span></span>
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-2xl">🇬🇧</span>
+                <span>Anglais — <span className="text-gray-600">lecture technique et communication pro</span></span>
+              </li>
+            </ul>
+
           </div>
           <div className="card">
             <h3 className="section-title">Certifications</h3>
