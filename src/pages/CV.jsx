@@ -1,5 +1,6 @@
 import Nav from '../components/Nav.jsx'
-import { FaAws, FaDocker, FaPython, FaJava, FaGitlab, FaAnsible, FaKubernetes, FaLinux } from "react-icons/fa";
+import { FaAws, FaDocker, FaPython, FaJava, FaGitlab, FaAnsible, FaLinux } from "react-icons/fa";
+import { SiKubernetes } from "react-icons/si";
 import { SiTerraform, SiGrafana, SiPrometheus, SiElasticsearch, SiArgocd, SiBash } from "react-icons/si";
 
 export default function CV() {
@@ -39,9 +40,10 @@ export default function CV() {
                 <span>Docker</span>
               </div>
               <div className="flex flex-col items-center">
-                <FaKubernetes className="text-3xl text-blue-500" />
+                <SiKubernetes className="text-3xl text-blue-500" />
                 <span>Kubernetes</span>
               </div>
+
               <div className="flex flex-col items-center">
                 <SiTerraform className="text-3xl text-purple-500" />
                 <span>Terraform</span>
