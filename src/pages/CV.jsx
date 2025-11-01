@@ -1,7 +1,7 @@
 import Nav from '../components/Nav.jsx'
 import { FaAws, FaDocker, FaPython, FaJava, FaGitlab, FaLinux } from "react-icons/fa";
 import { SiKubernetes, SiAnsible } from "react-icons/si";
-import { SiTerraform, SiGrafana, SiPrometheus, SiElasticsearch, SiArgocd, SiBash } from "react-icons/si";
+import { SiTerraform, SiGrafana, SiPrometheus, SiElasticsearch, SiArgo, SiGnubash } from "react-icons/si";
 
 export default function CV() {
   return (
@@ -53,7 +53,7 @@ export default function CV() {
                 <span>Ansible</span>
               </div>
               <div className="flex flex-col items-center">
-                <SiArgocd className="text-3xl text-rose-500" />
+                <SiArgo className="text-3xl text-rose-500" />
                 <span>ArgoCD</span>
               </div>
               <div className="flex flex-col items-center">
@@ -77,7 +77,7 @@ export default function CV() {
                 <span>Python</span>
               </div>
               <div className="flex flex-col items-center">
-                <SiBash className="text-3xl text-gray-500" />
+                <SiGnubash className="text-3xl text-gray-500" />
                 <span>Bash</span>
               </div>
               <div className="flex flex-col items-center">
