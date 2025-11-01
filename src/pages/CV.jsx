@@ -8,25 +8,70 @@ export default function CV() {
     <div>
       <Nav />
       <div className="container py-12">
-        <h2 className="text-3xl font-bold mb-6">Parcours & CV</h2>
+        <h2 className="text-3xl font-bold mb-6 text-center">Parcours & CV</h2>
 
+        {/* ===== EXPÉRIENCES ===== */}
         <div className="grid md:grid-cols-3 gap-6">
           <div className="card md:col-span-2" id="experiences">
             <h3 className="section-title">Expériences</h3>
-            <ul className="space-y-4">
-              <li>
-                <div className="font-semibold">Alternance Expert DevOps — Tessi Techno</div>
-                <div className="subtle">10/2023 — 09/2025</div>
-                <p className="mt-1">
-                  Reprise d’une app Java de tests automatisés, pipelines GitLab, gestion AWX,
-                  scripts Cypress, stack observabilité (Grafana/Prometheus/Elasticsearch),
-                  mises à jour Recette & PROD.
-                </p>
-              </li>
-            </ul>
+
+            <div className="relative border-l-2 border-blue-500 pl-6 space-y-8 mt-6">
+              {/* TESSI */}
+              <div className="relative">
+                <div className="absolute -left-[38px] bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center shadow-md">
+                  💼
+                </div>
+                <div>
+                  <h4 className="font-semibold text-lg text-gray-800">
+                    Alternance Expert DevOps — <span className="text-blue-600">Tessi Techno</span>
+                  </h4>
+                  <p className="text-sm text-gray-500 mb-2">Octobre 2023 — Septembre 2025</p>
+                  <p className="text-gray-700 leading-relaxed">
+                    Refonte et automatisation d’environnements internes : reprise d’une application Java de tests automatisés,
+                    création de pipelines CI/CD sous GitLab, intégration AWX (Ansible) pour le déploiement,
+                    observabilité via la stack <span className="font-medium text-blue-600">Grafana</span> / <span className="font-medium text-yellow-600">Prometheus</span> / <span className="font-medium text-emerald-600">Elasticsearch</span>,
+                    et participation aux mises en production.
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2 text-sm">
+                    <span className="px-2 py-1 bg-gray-100 rounded-md">GitLab CI/CD</span>
+                    <span className="px-2 py-1 bg-gray-100 rounded-md">AWX / Ansible</span>
+                    <span className="px-2 py-1 bg-gray-100 rounded-md">Cypress</span>
+                    <span className="px-2 py-1 bg-gray-100 rounded-md">Grafana</span>
+                    <span className="px-2 py-1 bg-gray-100 rounded-md">Prometheus</span>
+                    <span className="px-2 py-1 bg-gray-100 rounded-md">Elasticsearch</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* TOPSCORERS */}
+              <div className="relative">
+                <div className="absolute -left-[38px] bg-gray-400 text-white rounded-full w-8 h-8 flex items-center justify-center shadow-md">
+                  🧩
+                </div>
+                <div>
+                  <h4 className="font-semibold text-lg text-gray-800">
+                    Projet personnel — <span className="text-blue-600">TopScorers</span>
+                  </h4>
+                  <p className="text-sm text-gray-500 mb-2">2024 — En cours</p>
+                  <p className="text-gray-700 leading-relaxed">
+                    Conception d’un écosystème complet (bot Discord + API FastAPI + dashboard web React)
+                    déployé sur Kubernetes et piloté par Argo CD. Automatisation du pipeline CI/CD,
+                    monitoring Prometheus/Grafana, et hébergement GitOps sur mon serveur personnel.
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2 text-sm">
+                    <span className="px-2 py-1 bg-gray-100 rounded-md">FastAPI</span>
+                    <span className="px-2 py-1 bg-gray-100 rounded-md">React</span>
+                    <span className="px-2 py-1 bg-gray-100 rounded-md">Kubernetes</span>
+                    <span className="px-2 py-1 bg-gray-100 rounded-md">ArgoCD</span>
+                    <span className="px-2 py-1 bg-gray-100 rounded-md">Docker</span>
+                    <span className="px-2 py-1 bg-gray-100 rounded-md">GitHub Actions</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* COMPÉTENCES AVEC ICONES */}
+          {/* ===== COMPÉTENCES ===== */}
           <div className="card" id="competences">
             <h3 className="section-title">Compétences</h3>
 
@@ -43,7 +88,6 @@ export default function CV() {
                 <SiKubernetes className="text-3xl text-blue-500" />
                 <span>Kubernetes</span>
               </div>
-
               <div className="flex flex-col items-center">
                 <SiTerraform className="text-3xl text-purple-500" />
                 <span>Terraform</span>
@@ -92,23 +136,26 @@ export default function CV() {
           </div>
         </div>
 
-        {/* FORMATIONS / LANGUES / CERTIFS */}
+        {/* ===== FORMATIONS / LANGUES / CERTIFS ===== */}
         <div className="grid md:grid-cols-3 gap-6 mt-6">
           <div className="card">
             <h3 className="section-title">Formations</h3>
             <ul className="space-y-2 text-sm">
-              <li>2023–2025 — Expert Systèmes d’Information DevOps, Sup de Vinci Bordeaux</li>
-              <li>2023 — Concepteur Développeur d’applications Web, Le Wagon Bordeaux</li>
-              <li>2018 — Analyste Programmeur, CESI Bordeaux</li>
+              <li><span className="font-semibold text-blue-600">2023–2025</span> — Expert Systèmes d’Information DevOps, Sup de Vinci Bordeaux</li>
+              <li><span className="font-semibold text-blue-600">2023</span> — Concepteur Développeur d’applications Web, Le Wagon Bordeaux</li>
+              <li><span className="font-semibold text-blue-600">2018</span> — Analyste Programmeur, CESI Bordeaux</li>
             </ul>
           </div>
           <div className="card">
             <h3 className="section-title">Langues</h3>
-            <p>Français (natif), Anglais (lecture technique)</p>
+            <p className="text-sm text-gray-700">🇫🇷 Français (natif)<br />🇬🇧 Anglais (lecture technique)</p>
           </div>
           <div className="card">
             <h3 className="section-title">Certifications</h3>
-            <p>CKA – prévue en 2025</p>
+            <p className="text-sm text-gray-700">
+              🎯 CKA – prévue en 2025<br />
+              💡 GitLab Certified Associate – en préparation
+            </p>
           </div>
         </div>
       </div>
