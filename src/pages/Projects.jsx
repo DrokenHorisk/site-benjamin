@@ -1,7 +1,6 @@
 import Nav from '../components/Nav.jsx'
 import { FaDiscord, FaDocker, FaGithub, FaServer } from "react-icons/fa";
-import { SiKubernetes, SiFastapi, SiNginx, SiArgocd, SiGrafana, SiPrometheus, SiElasticsearch, SiPython } from "react-icons/si";
-
+import { SiKubernetes, SiFastapi, SiNginx, SiArgo, SiGrafana, SiPrometheus, SiElasticsearch, SiPython } from "react-icons/si";
 export default function Projects() {
   return (
     <div>
@@ -45,7 +44,7 @@ export default function Projects() {
                   <span className="px-2 py-1 rounded-md bg-teal-100 text-teal-800 flex items-center gap-1"><SiFastapi /> FastAPI</span>
                   <span className="px-2 py-1 rounded-md bg-gray-100 text-gray-800 flex items-center gap-1"><SiNginx /> Nginx</span>
                   <span className="px-2 py-1 rounded-md bg-blue-100 text-blue-800 flex items-center gap-1"><SiKubernetes /> Kubernetes (K3s)</span>
-                  <span className="px-2 py-1 rounded-md bg-rose-100 text-rose-800 flex items-center gap-1"><SiArgocd /> Argo CD</span>
+                  <span className="px-2 py-1 rounded-md bg-rose-100 text-rose-800 flex items-center gap-1"><SiArgo /> Argo CD</span>
                   <span className="px-2 py-1 rounded-md bg-orange-100 text-orange-800 flex items-center gap-1"><FaDocker /> Docker</span>
                   <span className="px-2 py-1 rounded-md bg-gray-200 text-gray-800 flex items-center gap-1"><FaGithub /> GHCR</span>
                   <span className="px-2 py-1 rounded-md bg-green-100 text-green-800 flex items-center gap-1"><SiGrafana /> Grafana</span>
