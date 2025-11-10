@@ -29,7 +29,6 @@ export default function CV() {
                   <p className="text-gray-700 leading-relaxed">
                     Refonte et automatisation d’environnements internes : reprise d’une application Java de tests automatisés,
                     création de pipelines CI/CD sous GitLab, intégration AWX (Ansible) pour le déploiement,
-                    observabilité via la stack <span className="font-medium text-blue-600">Grafana</span> / <span className="font-medium text-yellow-600">Prometheus</span> / <span className="font-medium text-emerald-600">Elasticsearch</span>,
                     et participation aux mises en production.
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2 text-sm font-medium">
