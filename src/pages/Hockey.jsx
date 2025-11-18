@@ -1,4 +1,72 @@
+import { useEffect, useState } from 'react'
 import Nav from '../components/Nav.jsx'
+
+// Petit widget pour se brancher sur ton backend TopScorers (optionnel)
+function TopscorersLiveBadge() {
+  const [status, setStatus] = useState<'loading' | 'ok' | 'error' | 'disabled'>('loading')
+  const [message, setMessage] = useState('')
+
+  const baseUrl = import.meta.env.VITE_TOPS_API_URL // ex: "https://ton-api.publique"
+
+  useEffect(() => {
+    if (!baseUrl) {
+      setStatus('disabled')
+      setMessage("API non configurée (VITE_TOPS_API_URL).")
+      return
+    }
+
+    const controller = new AbortController()
+
+    async function check() {
+      try {
+        // À adapter côté backend : /api/health ou /api/status
+        const res = await fetch(`${baseUrl}/api/health`, {
+          signal: controller.signal,
+        })
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}`)
+        }
+        setStatus('ok')
+        setMessage('Backend TopScorers joignable.')
+      } catch (e) {
+        setStatus('error')
+        setMessage("Impossible de joindre l’API (ou endpoint /api/health absent).")
+      }
+    }
+
+    check()
+    return () => controller.abort()
+  }, [baseUrl])
+
+  if (status === 'disabled') {
+    return (
+      <p className="text-xs subtle">
+        🔌 Zone prévue pour se brancher à mon API TopScorers (config via <code>VITE_TOPS_API_URL</code>).
+      </p>
+    )
+  }
+
+  const colorClass =
+    status === 'ok'
+      ? 'bg-emerald-100 text-emerald-800'
+      : status === 'error'
+      ? 'bg-rose-100 text-rose-800'
+      : 'bg-slate-100 text-slate-800'
+
+  const dotClass =
+    status === 'ok'
+      ? 'bg-emerald-500'
+      : status === 'error'
+      ? 'bg-rose-500'
+      : 'bg-slate-400'
+
+  return (
+    <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs ${colorClass}`}>
+      <span className={`w-2 h-2 rounded-full ${dotClass}`} />
+      <span>TopScorers API&nbsp;: {status === 'loading' ? 'vérification…' : message}</span>
+    </div>
+  )
+}
 
 export default function Hockey() {
   return (
@@ -8,10 +76,10 @@ export default function Hockey() {
         <h2 className="text-3xl font-bold mb-2 text-center">Hockey & Lausanne HC</h2>
         <p className="subtle text-center max-w-2xl mx-auto">
           Le hockey, ce n’est pas juste un sport pour moi : c’est un mix de bruit, de glace, de tensions
-          et de moments complètement irrationnels qui te retournent plus que certaines relations.
+          et de décisions irrationnelles qui te retournent plus que certaines relations.
         </p>
 
-        {/* Intro LHC + Caggiula */}
+        {/* ===== LHC & CAGGIULA ===== */}
         <div className="grid md:grid-cols-2 gap-6 mt-8">
           <div className="card">
             <h3 className="section-title">Pourquoi le LHC ?</h3>
@@ -42,7 +110,47 @@ export default function Hockey() {
           </div>
         </div>
 
-        {/* Ce que le hockey m’apporte au boulot */}
+        {/* ===== NATIONAL LEAGUE ===== */}
+        <div className="card mt-8">
+          <h3 className="section-title">National League — le terrain de jeu</h3>
+          <div className="grid md:grid-cols-2 gap-4 subtle text-sm">
+            <div>
+              <h4 className="font-semibold mb-1">Un championnat dense</h4>
+              <p>
+                La National League, c’est un petit nombre d’équipes mais un niveau très homogène. Entre
+                les clubs historiques et ceux qui montent fort, chaque série de matches peut retourner le
+                classement. Tu ne peux pas « décrocher » pendant 10 matchs, sinon tu sors du top 6.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-1">Style de jeu</h4>
+              <p>
+                Glace plus grande qu’en NHL, jeu un peu moins brutal, mais beaucoup de vitesse, de
+                transitions et de créativité en entrée de zone. Parfait pour suivre les patterns de jeu
+                et analyser les choix tactiques plutôt que juste les highlights.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-1">Pourquoi c’est intéressant pour la data</h4>
+              <p>
+                Avec un nombre de clubs limité et des confrontations fréquentes, tu peux suivre les
+                tendances d’un joueur ou d’une équipe sur toute une saison, voir comment un transfert
+                ou un changement de ligne impacte ses performances — idéal pour un projet comme
+                <strong> TopScorers</strong>.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-1">Lien avec TopScorers</h4>
+              <p>
+                Mon bot Discord et mon backend FastAPI s’appuient justement sur ces dynamiques de ligue :
+                valeur de marché des joueurs, momentum, stabilité dans le temps… La National League est
+                un bon terrain de jeu pour tester des idées d’analyse et d’automatisation.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* ===== CE QUE ÇA M’APPREND POUR LE DEVOPS ===== */}
         <div className="card mt-8">
           <h3 className="section-title">Ce que le hockey m’a appris (et que je réutilise en DevOps)</h3>
           <div className="grid md:grid-cols-2 gap-4 subtle text-sm">
@@ -81,7 +189,7 @@ export default function Hockey() {
           </div>
         </div>
 
-        {/* Bloc plus perso / matchday */}
+        {/* ===== MATCHDAY & API ===== */}
         <div className="grid md:grid-cols-2 gap-6 mt-8">
           <div className="card">
             <h3 className="section-title">Un soir de match type</h3>
@@ -98,17 +206,33 @@ export default function Hockey() {
           </div>
 
           <div className="card">
-            <h3 className="section-title">Et si on parle hockey en entretien ?</h3>
-            <p className="subtle text-sm">
-              Si tu es recruteur·se et que tu es arrivé·e jusque-là : je suis toujours partant pour
-              parler alignement, forecheck, ou gestion de l’overload en zone offensive… et faire le
-              parallèle avec la gestion de charge d’un cluster Kubernetes.
+            <h3 className="section-title">National League x TopScorers (live)</h3>
+            <p className="subtle text-sm mb-2">
+              Cette zone est pensée pour être branchée à mon backend <strong>TopScorers</strong>.
+              Quand l’API publique est exposée, elle peut afficher en direct un statut ou des infos
+              (dernière génération de dashboard, ping de santé, etc.).
             </p>
-            <p className="subtle text-sm mt-2">
-              En résumé : le hockey, c’est mon terrain de jeu émotionnel. DevOps, c’est celui où je
-              mets la même énergie, mais avec des pods, des pipelines et un peu moins de patins.
+            <TopscorersLiveBadge />
+            <p className="subtle text-xs mt-2">
+              Techniquement&nbsp;: le site statique (GitHub Pages) appelle une API FastAPI exposée derrière
+              Kubernetes. L’URL est injectée via <code>VITE_TOPS_API_URL</code>, ce qui permet de changer
+              de backend sans rebuild toute l’architecture.
             </p>
           </div>
+        </div>
+
+        {/* ===== BLOc ENTRETIEN ===== */}
+        <div className="card mt-8">
+          <h3 className="section-title">Et si on parle hockey en entretien ?</h3>
+          <p className="subtle text-sm">
+            Si tu es recruteur·se et que tu es arrivé·e jusque-là : je suis toujours partant pour
+            parler alignement, forecheck, gestion de l’overload en zone offensive… et faire le
+            parallèle avec la gestion de charge d’un cluster Kubernetes.
+          </p>
+          <p className="subtle text-sm mt-2">
+            En résumé : le hockey, c’est mon terrain de jeu émotionnel. DevOps, c’est celui où je
+            mets la même énergie, mais avec des pods, des pipelines et un peu moins de patins.
+          </p>
         </div>
       </div>
     </div>
