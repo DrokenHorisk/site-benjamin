@@ -2,26 +2,38 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ "main" ]
+
 permissions:
   contents: read
   pages: write
   id-token: write
+
 concurrency:
   group: "pages"
   cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      # 🟩 Injecte les variables d'environnement ici
+      - name: Set environment variables
+        run: |
+          echo "VITE_TOPS_API_URL=${{ vars.VITE_TOPS_API_URL }}" >> $GITHUB_ENV
+
       - run: npm ci || npm i
       - run: npm run build
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
